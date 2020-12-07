@@ -1,0 +1,40 @@
+.selector {
+  height: 10px;
+  width: 100%;
+  background-color: #ccc;
+}
+.input {
+  font-size: 18px;
+  width: 30px;
+  text-align: center;
+  border-radius: 0;
+  border: #999 solid 1px;
+}
+.container:hover {
+  .btnPostfixSuggestion, .btnPrefixSuggestion {
+    display: block;
+  }
+}
+
+.btnPostfixSuggestion, .btnPrefixSuggestion {
+  position: absolute;
+  display: none;
+  height: 0;
+  width: 0;
+  border: #ccc 6px solid;
+  &:hover, &:focus {
+    opacity: 0.7;
+  }
+}
+.btnPostfixSuggestion {
+  bottom: 1px;
+  right: 1px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.btnPrefixSuggestion {
+  bottom: 1px;
+  left: 1px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}

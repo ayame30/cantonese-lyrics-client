@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+div {
+  position: relative;
+}
+button {
+  padding: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+
+.inline-block {
+  display: inline-block;
+}

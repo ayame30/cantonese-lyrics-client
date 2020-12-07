@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+// import 'reset-css';
+import Line from './components/Line';
 
 function App() {
+  const [lyrics, setLyrics] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <textarea
+        value={lyrics}
+        onChange={(e) => setLyrics(e.target.value)}
+      />
+      <div>
+        {lyrics.split('\n').map((line, i) => (
+          <Line key={`line-${i}`} line={line} />
+        ))}
+      </div>
     </div>
   );
 }
+
 
 export default App;
