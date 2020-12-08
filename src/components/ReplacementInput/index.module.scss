@@ -1,17 +1,35 @@
 .selector {
-  height: 10px;
+  min-height: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-align: center;
   width: 100%;
-  background-color: #ccc;
+  cursor: pointer;
+  // background-color: #ccc;
+  small {
+    font-size: 8px;
+    color: #ccc;
+    display: none;
+  }
 }
 .input {
   font-size: 18px;
-  width: 30px;
+  min-width: 0;
+  padding: 5px 2px;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
   border-radius: 0;
   border: #999 solid 1px;
 }
-.container:hover {
+.inputContainer:hover {
   .btnPostfixSuggestion, .btnPrefixSuggestion {
+    display: block;
+  }
+  small {
     display: block;
   }
 }
@@ -21,7 +39,7 @@
   display: none;
   height: 0;
   width: 0;
-  border: #ccc 6px solid;
+  border: #ccc 4px solid;
   &:hover, &:focus {
     opacity: 0.7;
   }
@@ -37,4 +55,28 @@
   left: 1px;
   border-right-color: transparent;
   border-top-color: transparent;
+}
+
+.suggestions {
+  background-color: #fff;
+  border: 1px #ddd solid;
+  padding: 6px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -45px;
+  z-index: 3;
+  width: 180px;
+  max-height: 500px;
+  overflow: scroll;
+  text-align: left;
+
+  button {
+    display: inline-block;
+  }
+  small {
+    font-size: 12px;
+    display: block;
+
+  }
 }

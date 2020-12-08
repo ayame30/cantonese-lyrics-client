@@ -4,9 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import LyricsStore from './stores/LyricsStore';
+import SelectionStore from './stores/SelectionStore';
+import { StoreProvider } from './stores';
+
+const lyricsStore = new LyricsStore();
+const selectionStore = new SelectionStore();
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StoreProvider store={{lyricsStore, selectionStore}}>
+      <App />
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
