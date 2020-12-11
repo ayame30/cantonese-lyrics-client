@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 import { useStores } from '../../stores';
 import _ from 'lodash';
 import { observer } from "mobx-react";
-import { Popover } from 'react-tiny-popover'
-import { createSelectable } from 'react-selectable-fast'
-import SelectionStore from '../../stores/SelectionStore';
+import SuggestionPopup from '../SuggestionPopup';
 
 
 
 const ReplacementInput = ({ wordData }) => {
   const { selectionStore, lyricsStore } = useStores();
+  const [ openPopUp, setOpenPopUp ] = useState(false);
 
   const isFirstActive = selectionStore.selections.length && _.get(selectionStore.selections, '0.id') === wordData.id;
   const isPrefixSelected = selectionStore.prefixSelection && selectionStore.prefixSelection.id === wordData.id;
   const isPostfixSelected = selectionStore.postfixSelection && selectionStore.postfixSelection.id === wordData.id;
+
+  useEffect(() => {
+    if (isFirstActive || isPrefixSelected || isPostfixSelected) {
+      setOpenPopUp(true);
+
+    } else {
+      setOpenPopUp(false);
+    }
+  }, [
+    isFirstActive,
+    isPrefixSelected,
+    isPostfixSelected,
+  ]);
+  const onClose = () => {
+    setOpenPopUp(false);
+    selectionStore.removeSelections();
+  }
+
 
   return (
 
@@ -44,15 +61,8 @@ const ReplacementInput = ({ wordData }) => {
         />}
                 </div>
 
-        {(!!isFirstActive || isPrefixSelected || isPostfixSelected) &&
-          <div className={styles.suggestions}>
-            <button type="button" onClick={() => selectionStore.removeSelections()}>x</button>
-            {["詞一", "詞一","詞一", "詞一","詞一", "詞一","詞一", "詞一",].map(words => (
-              <button style={{ padding: '1px 3px'}}>
-                <small>{words}</small>
-              </button>
-            ))}
-          </div>
+        {openPopUp &&
+          <SuggestionPopup onClose={onClose}  />
         }
       </div>
 

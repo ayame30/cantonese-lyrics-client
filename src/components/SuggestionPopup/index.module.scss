@@ -1,0 +1,24 @@
+
+.suggestions {
+  background-color: #fff;
+  border: 1px #ddd solid;
+  padding: 6px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -45px;
+  z-index: 3;
+  width: 180px;
+  max-height: 500px;
+  overflow: scroll;
+  text-align: left;
+
+  button {
+    display: inline-block;
+  }
+  small {
+    font-size: 12px;
+    display: block;
+
+  }
+}
