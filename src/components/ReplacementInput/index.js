@@ -7,7 +7,7 @@ import SuggestionPopup from '../SuggestionPopup';
 
 
 
-const ReplacementInput = ({ wordData }) => {
+const ReplacementInput = ({ wordData, nextWord, prevWord }) => {
   const { selectionStore, lyricsStore } = useStores();
   const [ openPopUp, setOpenPopUp ] = useState(false);
 
@@ -62,7 +62,7 @@ const ReplacementInput = ({ wordData }) => {
                 </div>
 
         {openPopUp &&
-          <SuggestionPopup onClose={onClose}  />
+          <SuggestionPopup onClose={onClose} nextWord={nextWord} prevWord={prevWord}/>
         }
       </div>
 

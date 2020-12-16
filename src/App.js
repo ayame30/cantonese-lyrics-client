@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 // import 'reset-css';
 import Line from './components/Line';
@@ -10,6 +10,15 @@ import { observer } from "mobx-react";
 function App() {
   const { lyricsStore } = useStores();
   const [tab, setTab] = useState('original');
+
+
+  useEffect(() => {
+    fetch('https://demo-328sd82.s3-ap-southeast-1.amazonaws.com/data.json')
+      .then((res) => res.json())
+      .then((data) => {
+        lyricsStore.setData(data);
+      });
+  }, []);
 
   const tabOptions = {
     original: '原詞',
@@ -67,7 +76,7 @@ function App() {
       </div>
       <div style={{ padding: '20px' }}>
         {lyricsStore.transformed.map((line, i) => (
-          <Line key={`line-${i}`} line={line} />
+          <Line key={`line-${i}`} line={line}/>
         ))}
       </div>
 

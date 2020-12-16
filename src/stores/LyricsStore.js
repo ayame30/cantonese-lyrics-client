@@ -31,6 +31,8 @@ class LyricsStore {
   replacement = '';
   transformedReplacement = [];
 
+  data = { characters: {}, words: {}};
+
   usualWords = [
     '仍', '常', '還', '而', '如', '然', '時', '和', '才', '或', '亦', '若', '著', '未', '被', '在', '及', '便', '就', '又', '吧', '與', '也', '再', '這', '那', '會', '要', '已', '了', '竟', '當', '不', '可', '只', '因', '先', '請', '的', '嗎', '這'
   ];
@@ -41,7 +43,10 @@ class LyricsStore {
       transformed: observable,
       transformedReplacement: observable,
       usualWords: observable,
+      data: observable,
+
       setUsualWords: action,
+      setData: action,
 
       exportReplacement: computed,
       updateReplacement: action,
@@ -49,6 +54,10 @@ class LyricsStore {
       setOriginal: action,
       setReplacement: action,
     })
+    this.setOriginal(dummyOriginal);
+  }
+  setData(data) {
+    this.data = data;
     this.setOriginal(dummyOriginal);
   }
   setOriginal(val) {
@@ -67,16 +76,20 @@ class LyricsStore {
           acc[acc.length - 1].word += word;
           return acc;
         }
+        const d = this.data.characters[word];
         acc.push({
           id: [lineIndex, sentenceIndex, wordIndex].join('-'),
           type: 'word',
           index: wordIndex,
-          syllable: 'tat2',
+          syllable: d && d.syllable + d.tone9,
+          similiarTone: d && d.similiarTone,
           sentenceIndex,
           lineIndex,
           word: word,
           replacement: this.transformedReplacement.length ? _.get(this.transformedReplacement, `${lineIndex}.children.${sentenceIndex}.children.${wordIndex}.word`, '') : '',
           replacementSyllable: this.transformedReplacement.length ? _.get(this.transformedReplacement, `${lineIndex}.children.${sentenceIndex}.children.${wordIndex}.syllable`, ''): '',
+          replacementsimiliarTone: this.transformedReplacement.length ? _.get(this.transformedReplacement, `${lineIndex}.children.${sentenceIndex}.children.${wordIndex}.similiarTone`, ''): '',
+
         });
         return acc;
        }, []),
@@ -103,13 +116,17 @@ class LyricsStore {
           acc[acc.length - 1].word += word;
           return acc;
         }
+
+        const d = this.data.characters[word];
+
         acc.push({
           id: [lineIndex, sentenceIndex, wordIndex].join('-'),
           type: 'word',
           sentenceIndex,
           lineIndex,
           index: wordIndex,
-          syllable: 'tat2',
+          syllable: d && d.syllable + d.tone9,
+          similiarTone: d && d.similiarTone,
           word: word,
         });
         return acc;

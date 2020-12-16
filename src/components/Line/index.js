@@ -18,9 +18,10 @@ const Line = ({ line }) => {
             <SelectableGroup
               resetOnStart
               onSelectionFinish={(val) => {
+                console.log(val);
                 selectionStore.setSelections(val.map(v => toJS(v.props.wordData)).sort((a, b) => a.index - b.index));
               }}
-              ignoreList={['.not-selectable']}
+              // ignoreList={['.not-selectable']}
               globalMouse={false}
               allowClickWithoutSelected
             >
@@ -35,12 +36,19 @@ const Line = ({ line }) => {
                 ))}
               </div>
             </SelectableGroup>
-            {sentence.children.map((wordData) => (
-              <div key={`word-${wordData.id}`} className="inline-block">
-                <div style={{ visibility: 'hidden'}}><Word wordData={wordData} /></div>
-                <ReplacementInput wordData={wordData} />
-              </div>
-            ))}
+            {sentence.children.map((wordData, i, arr) => {
+              const nextWord = i > 0 ? arr[i + 1] : undefined;
+              const prevWord = i < arr.length - 1 ? arr[i - 1] : undefined;
+              return (
+                <div key={`word-${wordData.id}`} className="inline-block">
+                  <div style={{ visibility: 'hidden'}}><Word wordData={wordData} /></div>
+                  <ReplacementInput wordData={wordData}
+                    nextWord={nextWord}
+                    prevWord={prevWord}
+                  />
+                </div>
+              );
+            })}
           </div>
           {arr.length - 1 > si && <div className={styles.separator} />}
         </div>))}
