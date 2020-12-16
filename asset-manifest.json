@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "https://ayame30.github.io/cantonese-lyrics-client/static/css/main.78ff541b.chunk.css",
+    "main.js": "https://ayame30.github.io/cantonese-lyrics-client/static/js/main.ff565701.chunk.js",
+    "main.js.map": "https://ayame30.github.io/cantonese-lyrics-client/static/js/main.ff565701.chunk.js.map",
+    "runtime-main.js": "https://ayame30.github.io/cantonese-lyrics-client/static/js/runtime-main.cab28466.js",
+    "runtime-main.js.map": "https://ayame30.github.io/cantonese-lyrics-client/static/js/runtime-main.cab28466.js.map",
+    "static/js/2.29bdfcac.chunk.js": "https://ayame30.github.io/cantonese-lyrics-client/static/js/2.29bdfcac.chunk.js",
+    "static/js/2.29bdfcac.chunk.js.map": "https://ayame30.github.io/cantonese-lyrics-client/static/js/2.29bdfcac.chunk.js.map",
+    "static/js/3.5d9f3172.chunk.js": "https://ayame30.github.io/cantonese-lyrics-client/static/js/3.5d9f3172.chunk.js",
+    "static/js/3.5d9f3172.chunk.js.map": "https://ayame30.github.io/cantonese-lyrics-client/static/js/3.5d9f3172.chunk.js.map",
+    "index.html": "https://ayame30.github.io/cantonese-lyrics-client/index.html",
+    "static/css/main.78ff541b.chunk.css.map": "https://ayame30.github.io/cantonese-lyrics-client/static/css/main.78ff541b.chunk.css.map",
+    "static/js/2.29bdfcac.chunk.js.LICENSE.txt": "https://ayame30.github.io/cantonese-lyrics-client/static/js/2.29bdfcac.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cab28466.js",
+    "static/js/2.29bdfcac.chunk.js",
+    "static/css/main.78ff541b.chunk.css",
+    "static/js/main.ff565701.chunk.js"
+  ]
+}
