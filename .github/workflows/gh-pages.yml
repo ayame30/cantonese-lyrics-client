@@ -23,6 +23,7 @@ jobs:
           cmd: build
         env:
           PUBLIC_URL: https://ayame30.github.io/cantonese-lyrics-client
+          NODE_ENV: development
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
